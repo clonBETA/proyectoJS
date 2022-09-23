@@ -1,52 +1,4 @@
 
-/*
-
-******* APUNTES ********
-******* APUNTES ********
-******* APUNTES ********
-
-//Declaracion de variables
-
-let nombre;
-let apellido;
-let anio;
-
-//Asignacion
-
-nombre = "Cristian";
-apellido = "Gomez";
-anio = 2022;
-
-//Inicializar
-
-let user = "Daniel";
-const DNI = "12345678";
-
-//Reasignacion
-
-user = "Pedro";  //Las constantes no se pueden reasignar
-
-//Concatenacion de variables
-
-nombreCompleto = nombre + " " + apellido;
-
-//Metodo de entrada
-
-let nombreUser = prompt("Ingresa tu nombre", "Ej: Cristian Gomez");
-
-//Metodos de salida
-
-//Consol.log sirve para ver valores en la consola (operaciones, strings, etc)
-console.log("Mensaje en consola");   //puede recibir un STRING; NUMERO; VARIABLE, COMBINACION
-console.log(nombreCompleto);
-//alert
-alert("Mensaje ALERT");   //Sirve para dar mensajes al usuario
-*/
-
-
-
-
-
 // **********  PROYECTO   **********
 // **********  PROYECTO   **********
 // **********  PROYECTO   **********
@@ -178,8 +130,10 @@ while (mezclar){
     //Se asigna nuevo valor a variable
     energia = nivelEnergia;
 
+    //Comprueba bool
     mezclar = comprobarFormula(nivelEnergia,formulaCorrecta);
 
+    //Comprueba cantidad de aciertos
     console.log("aciertos" + aciertos);
 
 }
