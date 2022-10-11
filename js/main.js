@@ -4,6 +4,74 @@
 // **********  PROYECTO   **********
 
 
+function ingresarAnio(){
+
+    const isInteger = /^(\d)+$/g;
+
+    do{
+
+        let nacimiento = prompt("La numerología definirá tu futuro. Ingresa el año en el que has nacido");  //Se declara e ingresa el valor del año de nacimiento
+
+        if (isInteger.test(nacimiento)){
+
+            let numeroArray = num => Number(num);  //Funcion para convertir string a numero
+
+            nacimientoArray = Array.from(String(nacimiento), numeroArray);  //Se declara y asignan los elementos del array
+
+        }else{
+
+            nacimientoArray = Array.from(String("ERROR"));
+        
+        }
+
+        console.log(nacimientoArray);
+
+    }while (nacimientoArray.length > 4);
+
+}
+
+function dificultad(){
+
+    let nacimientoNivel;
+
+    do{
+
+        let total = 0;
+
+        nacimientoArray.forEach(element => {
+            
+            total = total + parseInt(element);
+
+        });
+
+        nacimientoNivel = Array.from(String(total));
+
+        nacimientoArray = nacimientoNivel;
+
+    }while(nacimientoNivel.length >= 2);
+
+    return nacimientoNivel;
+
+}
+
+function dificultadAciertos(nacimientoNivel){
+
+    if (nacimientoNivel >= 0 && nacimientoNivel<=3){
+
+        return dificultad1.exito;
+
+    }else  if (nacimientoNivel >= 4 && nacimientoNivel <=6){
+        
+        return dificultad2.exito;
+
+    }else {
+
+        return dificultad3.exito;
+    
+    }
+
+}
+
 function nombrePresentacion(){
 
     //Ingreso de nombre de usuario
@@ -58,7 +126,7 @@ function energiaRestante(a,b,c,d){
 
 }
 
-function comprobarFormula(funNivelEnergia,funFormulaCorrecta){
+function comprobarFormula(funNivelEnergia,funFormulaCorrecta, funNacNivel){
 
     if (funNivelEnergia > 0){
 
@@ -68,9 +136,11 @@ function comprobarFormula(funNivelEnergia,funFormulaCorrecta){
 
         //Se comprueban los aciertos en la formula
 
-        if (funFormulaCorrecta >= 3){
+        console.log("dificultadAciertos = " + dificultadAciertos(funNacNivel));
 
-            alert("¡LO HAS LOGRADO!")
+        if (funFormulaCorrecta >= dificultadAciertos(funNacNivel)){
+
+            alert("¡LO HAS LOGRADO! Has conseguido la formula correcta.")
     
             return false;
     
@@ -97,15 +167,44 @@ function comprobarFormula(funNivelEnergia,funFormulaCorrecta){
 
 let nombreUsuario;
 
+let nacimientoArray;
+
 let mezclar = true;
 
 let energia = 10;
 
 let aciertos = 0;
 
+//Declaracion de objetos literales
+
+const dificultad1={
+
+    tipo:"Baja",
+    exito: 3
+
+}
+
+const dificultad2={
+
+    tipo:"Alta",
+    exito: 5
+
+}
+
+const dificultad3={
+
+    tipo:"Media",
+    exito: 4
+
+}
+
 //Ingresar nombre y presentacion del juego
 
 nombrePresentacion()
+
+ingresarAnio()
+
+let nacNivel = dificultad();
 
 //Loop principal
 
@@ -125,18 +224,15 @@ while (mezclar){
     //Llamado funcion 
     let nivelEnergia = energiaRestante(energia,ingrediente1,ingrediente2,ingrediente3);
 
-    console.log("nivel energia" + nivelEnergia);
+    console.log("nivel energia = " + nivelEnergia);
 
     //Se asigna nuevo valor a variable
     energia = nivelEnergia;
 
     //Comprueba bool
-    mezclar = comprobarFormula(nivelEnergia,formulaCorrecta);
+    mezclar = comprobarFormula(nivelEnergia,formulaCorrecta,nacNivel);
 
     //Comprueba cantidad de aciertos
     console.log("aciertos" + aciertos);
 
 }
-
-
-
